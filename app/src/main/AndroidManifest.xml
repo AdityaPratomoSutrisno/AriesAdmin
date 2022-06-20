@@ -4,6 +4,7 @@
 
     <application
         android:allowBackup="false"
+        android:exported="true"
         android:icon="@drawable/logo_apps"
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo_apps"
@@ -20,7 +21,8 @@
         <activity android:name=".DashboardActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
