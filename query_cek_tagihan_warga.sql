@@ -1,0 +1,1 @@
+SELECT id_KK, status, IIF ((SELECT id_warga_off from tb_warga_off WHERE id_periode_off = 7)=id_KK,"0","1") as status_tagihan FROM tb_kk where id_KK not in (SELECT id_warga_iuran FROM tb_iuran as tbi where id_periode_iuran = 7)

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.aditya.ariesadmin">
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/logo_apps"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo_apps"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Transparent"
+        android:installLocation="internalOnly"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".PasswordBaruActivity"></activity>
+        <activity android:name=".LupaPasswordActivity" />
+        <activity android:name=".DaftarKKActivity" />
+        <activity android:name=".TambahDataKKActivity" />
+        <activity android:name=".DaftarIuranActivity" />
+        <activity android:name=".TambahIuranActivity" />
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
