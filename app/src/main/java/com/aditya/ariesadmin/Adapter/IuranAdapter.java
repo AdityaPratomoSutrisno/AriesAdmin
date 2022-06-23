@@ -33,15 +33,16 @@
 
     public class IuranAdapter extends RecyclerView.Adapter<IuranAdapter.Holder> {
 
-        Context context;
-        public List<IuranModel> iuranModels;
-        NumberFormat formatRupiah;
+        Context context; //context untuk menyimpan activity / java yang dituju oleh adapter.
+        public List<IuranModel> iuranModels; //Iuran model untuk menyimpan model dengan struktur data IuranModel.
+        NumberFormat formatRupiah; //NumberFormat untuk merubah format number
         String Bulan;
 
-        public IuranAdapter(Context context, List<IuranModel> iuranModels, String Bulan) {
+        public IuranAdapter(Context context, List<IuranModel> iuranModels, String Bulan) { //memberikan nilai awal
             this.context = context;
             this.iuranModels = iuranModels;
             this.Bulan = Bulan;
+            //nilai awal nya disini context, iuranModel dan Bulan
         }
 
         @Override
@@ -54,6 +55,7 @@
 
         @Override
         public void onBindViewHolder(Holder holder, int position) {
+            //berfungsi memberikan value / nilai pada setiap komponen dan disetiap list/view memiliki nilai yang berbeda
             IuranModel dm = iuranModels.get(position);
 
             Locale localeID = new Locale("in", "ID");
@@ -114,12 +116,12 @@
         }
 
         @Override
-        public int getItemCount() {
+        public int getItemCount() { //menampilkan list/view sesuai dengan jumlah yang ditentukan.
             return iuranModels.size();
         }
 
         class Holder extends RecyclerView.ViewHolder{
-
+//mendeklarasikan id komponen dari sebuah view yang akan digunakan, untuk view dideklarasikan di holder yang satunya
             CardView cvIuranWarga;
             ImageView ivArrow;
             TextView tvNomorIuran,tvNamaIuran,tvNominalIuran,tvTanggalPelunasan;
