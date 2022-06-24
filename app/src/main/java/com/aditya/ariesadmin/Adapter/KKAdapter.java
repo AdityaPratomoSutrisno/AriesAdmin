@@ -24,8 +24,8 @@
 
     public class KKAdapter extends RecyclerView.Adapter<KKAdapter.Holder> {
 
-        Context context;
-        public List<KKModel> kkModels;
+        Context context; //context untuk menyimpan activity / java yang dituju oleh adapter.
+        public List<KKModel> kkModels; //KK model untuk menyimpan model dengan struktur data kkModels.
 
         public KKAdapter(Context context, List<KKModel> kkModels) {
             this.context = context;
