@@ -72,8 +72,10 @@
                 holder.tvTanggalPelunasan.setText("Ingatkan");
                 holder.tvTanggalPelunasan.setTextColor(context.getResources().getColor(R.color.Green66));
                 Glide.with(context).load(context.getResources().getDrawable(R.drawable.whatsapp)).into(holder.ivArrow);
+                holder.tvLabelNominal.setVisibility(View.GONE);
             }else {
                 holder.tvNominalIuran.setText(formatRupiah.format(Integer.parseInt(dm.getNominal_iuran())));
+                holder.tvLabelNominal.setVisibility(View.VISIBLE);
             }
 
             if(!dm.getTanggal_iuran().isEmpty()){
@@ -124,7 +126,7 @@
 //mendeklarasikan id komponen dari sebuah view yang akan digunakan, untuk view dideklarasikan di holder yang satunya
             CardView cvIuranWarga;
             ImageView ivArrow;
-            TextView tvNomorIuran,tvNamaIuran,tvNominalIuran,tvTanggalPelunasan;
+            TextView tvNomorIuran,tvNamaIuran,tvNominalIuran,tvTanggalPelunasan,tvLabelNominal;
             public Holder(View itemView) {
                 super(itemView);
 
@@ -133,6 +135,7 @@
                 tvNamaIuran = itemView.findViewById(R.id.tvNamaIuran);
                 tvNominalIuran = itemView.findViewById(R.id.tvNominalIuran);
                 tvTanggalPelunasan = itemView.findViewById(R.id.tvTanggalPelunasan);
+                tvLabelNominal = itemView.findViewById(R.id.tvLabelNominal);
                 ivArrow = itemView.findViewById(R.id.ivArrow);
             }
         }

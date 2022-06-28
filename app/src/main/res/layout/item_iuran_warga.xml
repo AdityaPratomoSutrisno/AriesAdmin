@@ -16,19 +16,38 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvNomorIuran"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:fontFamily="@font/inter_regular"
-            android:gravity="center_vertical"
-            android:text="-"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvNomorIuran2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/inter_regular"
+                android:gravity="center_vertical"
+                android:text="Nomor Iuran: "
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:id="@+id/tvNomorIuran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/inter_regular"
+                android:gravity="center_vertical"
+                android:text="-"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvNamaIuran"
@@ -63,6 +82,16 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvLabelNominal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_regular"
+                android:gravity="center_vertical"
+                android:text="Nominal : "
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp" />
 
             <TextView
                 android:id="@+id/tvNominalIuran"
