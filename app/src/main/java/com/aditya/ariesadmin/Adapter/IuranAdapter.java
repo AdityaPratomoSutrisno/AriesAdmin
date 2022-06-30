@@ -65,13 +65,14 @@
             holder.tvNomorIuran.setText(dm.getNomor_iuran());
             holder.tvNamaIuran.setText(dm.getNama_lengkap_iuran());
             Log.i("Data Nominal"," == "+dm.getNominal_iuran());
-
+//18.kemudian ditampilin,tadi karna ada 2 list (list yang belum bayar dan sudah bayar)
+            //yang belum bayar itu, nilai default nominal iurannya itu "belum lunas"
             if(dm.getNominal_iuran().equals("Belum Lunas")){
-                holder.tvNominalIuran.setText(dm.getNominal_iuran());
-                holder.tvNominalIuran.setTextColor(context.getResources().getColor(R.color.RedFF));
-                holder.tvTanggalPelunasan.setText("Ingatkan");
-                holder.tvTanggalPelunasan.setTextColor(context.getResources().getColor(R.color.Green66));
-                Glide.with(context).load(context.getResources().getDrawable(R.drawable.whatsapp)).into(holder.ivArrow);
+                holder.tvNominalIuran.setText(dm.getNominal_iuran()); //munculin nominal iuran (belum lunas)
+                holder.tvNominalIuran.setTextColor(context.getResources().getColor(R.color.RedFF)); //dirubah jadi warna merah
+                holder.tvTanggalPelunasan.setText("Ingatkan"); //dirubah menjadi ingatkan (Whatsapp)
+                holder.tvTanggalPelunasan.setTextColor(context.getResources().getColor(R.color.Green66)); //hijau
+                Glide.with(context).load(context.getResources().getDrawable(R.drawable.whatsapp)).into(holder.ivArrow);//panah dimasukin gambar whatsapp
                 holder.tvLabelNominal.setVisibility(View.GONE);
             }else {
                 holder.tvNominalIuran.setText(formatRupiah.format(Integer.parseInt(dm.getNominal_iuran())));

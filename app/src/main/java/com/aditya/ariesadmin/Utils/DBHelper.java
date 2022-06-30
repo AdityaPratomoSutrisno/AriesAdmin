@@ -413,14 +413,20 @@ public class DBHelper extends SQLiteOpenHelper {
         return status;
     }
 
-    public List<IuranModel> Iuran_Data(String ID_Periode){
+    public List<IuranModel> Iuran_Data(String ID_Periode){ //10.ID_Periode fungsinya ngecek id - id iurannya.
         SQLiteDatabase database = this.getWritableDatabase();
-        List<IuranModel> Iuran_Data = new ArrayList<>();
+        List<IuranModel> Iuran_Data = new ArrayList<>(); //16.dikirimkan ke list iuran semuanya
+        //jadi list iuran pertama itu jelas masuk ke orang yang nunggak
+        //terus ditambah lagi list yang kedua itu orang yang sudah bayar
+        //jadi warga yang belum bayar selalu diatas
         Iuran_Data.clear();
-
+//Query menampilkan nunggak
         String nungggakquery = "SELECT "+CL_Nomor_Iuran+", "+CL_Nama_Lengkap_KK+", 'Belum Lunas', "+CL_Nomor_HP+" FROM " + TB_KK+
-                " Where "+CL_ID_KK+
+                //11.query ini ngambil cl_nomor_iuran, cl_nama_lengkap, nilai default(belum lunas), cl_nomor_hp, dari tabel KK
+                " Where "+CL_ID_KK+ //12. dimana id kk itu
                 " not in (SELECT "+CL_ID_Warga_Iuran+" FROM "+TB_Iuran+" WHERE "+CL_ID_Periode_Iuran+" = '"+ID_Periode+"') and "+CL_Status+" = 1";
+                //13. yang tidak ada pada list yang sudah bayar, dan cl_status (switch aktif non)
+                //jadi pada bagian nunggak ini mencocokan id kk yang tidak terdapat pada id yang sudah bayar
         Cursor cursornunggak = database.rawQuery(nungggakquery, null);
         if (cursornunggak.moveToFirst()){
             do {
@@ -432,7 +438,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         ""+cursornunggak.getString(3)));
             } while (cursornunggak.moveToNext());
         }
-
+//14.query menampilkan sudah bayar
         String selectQuery = "SELECT "+CL_ID_Iuran+", "+CL_Nomor_Iuran+", "+CL_Nama_Lengkap_KK+", "+CL_Nominal_Iuran+", "+CL_Tanggal_Iuran+" FROM " + TB_Iuran+ ", "+TB_KK+
                 " Where "+CL_ID_Periode_Iuran+" ='"+ID_Periode+"' and "+CL_ID_KK+" = "+CL_ID_Warga_Iuran;
 
@@ -449,7 +455,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         database.close();
-        return Iuran_Data;
+        return Iuran_Data; //15. nanti dikirim ke....
     }
 
     public List<IuranModel> Iuran_Data_Detail(String ID_Iuran){
@@ -556,13 +562,13 @@ public class DBHelper extends SQLiteOpenHelper {
         List<PeriodeModel> Periode_Data = new ArrayList<>();
         Periode_Data.clear();
 
-        String selectQuery = "SELECT * FROM " + TB_Periode;
+        String selectQuery = "SELECT * FROM " + TB_Periode; // 2.ngambil semua data di TB_Periode
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor cursor = database.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()){
             do {
                 Periode_Data.add(new PeriodeModel(""+cursor.getString(0),
-                        ""+cursor.getString(1)));
+                        ""+cursor.getString(1))); //3.ngambil ini semua
             } while (cursor.moveToNext());
         }
 

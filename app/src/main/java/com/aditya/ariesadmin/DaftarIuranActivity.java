@@ -61,7 +61,7 @@ public class DaftarIuranActivity extends AppCompatActivity {
         periodeModels = new ArrayList<>();
         periodeModels.clear();
 
-        periodeModels = dbHelper.Periode_Data();
+        periodeModels = dbHelper.Periode_Data(); // 1. bagian ini dimasukin ke spinner (81/77)
 
         ID_Periode = new String[periodeModels.size()];
         Periode = new String[periodeModels.size()];
@@ -73,8 +73,8 @@ public class DaftarIuranActivity extends AppCompatActivity {
             Periode[i] = km.getPeriode();
         }
 
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(DaftarIuranActivity.this, R.layout.item_spinner_12, Periode);
-        spIuran.setAdapter(adapter2);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(DaftarIuranActivity.this, R.layout.item_spinner_12, Periode); //ini masuk di spinner
+        spIuran.setAdapter(adapter2); //4. masuk kesini, nanti muncul yang spinner periode di atas (januari, feb....)
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("L", new Locale("in", "ID"));
         String month = df.format(c);
@@ -82,8 +82,10 @@ public class DaftarIuranActivity extends AppCompatActivity {
 
         spIuran.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Data(ID_Periode[position], Periode[position]);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) { //5.kalo sp iuran di select
+                Data(ID_Periode[position], Periode[position]); //6.ngambil ID_Periode (dropdown), kemudian string itu nama bulannya.
+                //7a.nanti di index 0 nanti ngambil Id nya sama ngambil textnya
+                //kalo Data di klik...
             }
 
             @Override
@@ -108,13 +110,13 @@ public class DaftarIuranActivity extends AppCompatActivity {
         finish();
     }
 
-    void Data(String month, String Bulan){
+    void Data(String month, String Bulan){ //7b.nanti bakal ngarah ke sini kebagian void data
         List<IuranModel> iuranModels = new ArrayList<>();
         iuranModels.clear();
 
-        iuranModels = dbHelper.Iuran_Data(month);
-
-        if(iuranModels.size()==0){
+        iuranModels = dbHelper.Iuran_Data(month); //8.nanti disini nampung data helper dan iuran_data, parameternya index_periode (month)
+        //9.kalo Iuran_Data di klik...
+        if(iuranModels.size()==0){ //18.kalo jumlahnya 0, nanti nampilan datakosong (TvDataKosong)
             tvDatakosong.setVisibility(View.VISIBLE);
             rvDaftarIuran.setVisibility(View.GONE);
         }else {
@@ -122,7 +124,7 @@ public class DaftarIuranActivity extends AppCompatActivity {
             rvDaftarIuran.setVisibility(View.VISIBLE);
         }
 
-        iuranAdapter = new IuranAdapter(this,iuranModels, Bulan);
+        iuranAdapter = new IuranAdapter(this,iuranModels, Bulan); //17.kemudian dimasukan di IuranAdapter
         RecyclerView.LayoutManager mLayoutManagerPopuler = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false);
         rvDaftarIuran.setLayoutManager(mLayoutManagerPopuler);
         rvDaftarIuran.setAdapter(iuranAdapter);
