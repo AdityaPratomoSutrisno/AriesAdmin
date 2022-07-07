@@ -61,7 +61,7 @@ public class DaftarIuranActivity extends AppCompatActivity {
         periodeModels = new ArrayList<>();
         periodeModels.clear();
 
-        periodeModels = dbHelper.Periode_Data(); // 1. bagian ini dimasukin ke spinner (81/77)
+        periodeModels = dbHelper.Periode_Data(); // 1. bagian ini dimasukin ke spinner (dropdown) (81/77)
 
         ID_Periode = new String[periodeModels.size()];
         Periode = new String[periodeModels.size()];
